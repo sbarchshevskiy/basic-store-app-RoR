@@ -4,6 +4,12 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def check_if_order
+    if @order
+      show
+    end
+  end
+
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)

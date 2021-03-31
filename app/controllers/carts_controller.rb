@@ -2,7 +2,12 @@ class CartsController < ApplicationController
 
 
   def show
+    number_of_items = cart.length
+    unless number_of_items > 0
+      redirect_to root_path
+      end
   end
+
 
   def add_item
     product_id = params[:product_id].to_s
