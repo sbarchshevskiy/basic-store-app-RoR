@@ -1,21 +1,22 @@
 <section class="admin-dashboard">
 
-
   <div class="panel panel-default products">
 
     <table class="table table-bordered">
+
+    <h1>Admin Dashboard</h1>
+
       <thead>
         <tr>
-          <th colspan="2">Product</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Qty Remaining</th>
-          <th></th>
+          <th colspan="2">Total product quantity</th>
+              <td><%= @products_count %></td>
+
+          <th>Number of categories</th>
+              <td><%= @categories_count%></td>
+
         </tr>
       </thead>
-      <tbody>
-    
-      </tbody>
+  
     </table>
 
   </div>
