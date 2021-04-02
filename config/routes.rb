@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
 
   get 'about/', to: 'about#index' 
+  get 'admin/category/', to: 'category#new'
 
 
 
