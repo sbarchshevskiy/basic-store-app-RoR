@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
 
   get 'about/', to: 'about#index' 
-  get 'admin/category/', to: 'category#new'
 
 
 
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
+    resources :categories, only: [:index, :create, :new]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
