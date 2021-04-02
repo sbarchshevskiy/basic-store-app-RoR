@@ -4,10 +4,16 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
+  delete :logout, to: "sessions#logout"
+  get :logged_in, to: "sessions#logged_in"
+
+
+
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
   get 'about/', to: 'about#index' 
+  get 'registrations/', to: 'registrations#index'
 
 
 
@@ -17,7 +23,6 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:create, :show]
-  resources :register, only: [:index]
 
 
   namespace :admin do
