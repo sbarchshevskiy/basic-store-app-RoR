@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   private
 
+  skip_before_action :verify_authenticity_token
+
   def cart
     @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
   end
