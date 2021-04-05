@@ -17,6 +17,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :enhanced_cart
 
+  def current_user
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    end
+  end
+  helper_method :current_user
+
+
+
   def cart_subtotal_cents
     enhanced_cart.map {|entry| entry[:product].price_cents * entry[:quantity]}.sum
   end

@@ -19,22 +19,23 @@
         </li>
        
 
-        <% if :logged_in%>
+         
+         
+        <% if current_user %>
            <li>
-               <span class="nav navbar-nav">Logged in as <% :current_user %></span>
-               <%# <% raise :users.email%> %>
+               <span class="nav navbar-nav">Logged in as <%= current_user.email %></span>
+               <%# <% raise current_user%> %>
 
          </li>
          
-         
          <li>
-         <%= form_for(:current_user) do |f| %>
-             <%= f.submit "Logout" %>
+         <%= form_for :user, :url => { :action => "logout", :controller=>"sessions", :method => "post"} do |f| %>
+             <%= f.submit "Logout"  %>
             <%end%>
          </li>
          <%else%>
          <li>
-         <%= link_to 'Login', logged_in_url, class: 'btn btn-outline-primary' %>
+         <%= link_to 'Login', login_url, class: 'btn btn-outline-primary' %>
          </li>
 
            <li>
