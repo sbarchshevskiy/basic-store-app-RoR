@@ -19,13 +19,16 @@
         </li>
        
 
-        <% if @current_user%>
+        <% if :logged_in%>
            <li>
-               <span >Logged in as <%= current_user.user%></span>
-         </li>
+               <span class="nav navbar-nav">Logged in as <% :current_user %></span>
+               <%# <% raise :users.email%> %>
 
+         </li>
+         
+         
          <li>
-         <%= form_for(:user), logout do |f| %>
+         <%= form_for(:current_user) do |f| %>
              <%= f.submit "Logout" %>
             <%end%>
          </li>

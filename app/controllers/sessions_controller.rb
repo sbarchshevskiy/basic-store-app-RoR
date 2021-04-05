@@ -26,7 +26,6 @@ class SessionsController < ApplicationController
         logged_in: true,
         user: @current_user
       }
-      redirect_to root_path
 
     else
       render json: {
@@ -41,5 +40,6 @@ class SessionsController < ApplicationController
       status: 200,
       logged_out: true
     }
+    redirect_to login
   end
 end
