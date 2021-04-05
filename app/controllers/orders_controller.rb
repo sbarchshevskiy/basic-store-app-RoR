@@ -4,12 +4,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def check_if_order
-    if @order
-      show
-    end
-  end
-
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
@@ -45,10 +39,7 @@ class OrdersController < ApplicationController
     order = Order.new(
       email: params[:stripeEmail],
       total_cents: cart_subtotal_cents,
-      stripe_charge_id: stripe_charge.id, 
-      amount:      cart_subtotal_cents,
-      currency: 'cad'
-      # returned by stripe
+      stripe_charge_id: stripe_charge.id, # returned by stripe
     )
 
     enhanced_cart.each do |entry|
@@ -59,8 +50,6 @@ class OrdersController < ApplicationController
         quantity: quantity,
         item_price: product.price,
         total_price: product.price * quantity
-        amount:      cart_subtotal_cents,
-        currency:'cad'
       )
     end
     order.save!
