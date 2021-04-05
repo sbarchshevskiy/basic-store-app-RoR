@@ -10,10 +10,11 @@ class RegistrationsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      render json: {
-        status: :created,
-        user: user
-      }
+      # render json: {
+      #   status: :created,
+      #   user: user
+      # }
+      redirect_to root_path
     
     else 
       render json: {'status': 500}

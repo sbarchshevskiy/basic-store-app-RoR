@@ -9,12 +9,12 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      render json: {
-        status: :created,
-        logged_id: true,
-        user: user
-      }
-      redirect_to '/'
+      # render json: {
+      #   status: :created,
+      #   logged_id: true,
+      #   user: user
+      # }
+      redirect_to root_path
     else
       render json: {status: 401}
     end
@@ -26,6 +26,8 @@ class SessionsController < ApplicationController
         logged_in: true,
         user: @current_user
       }
+      redirect_to root_path
+
     else
       render json: {
         logged_in: false
