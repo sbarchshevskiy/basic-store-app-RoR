@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
         logged_id: true,
         user: user
       }
+      redirect_to '/'
     else
       render json: {status: 401}
     end
