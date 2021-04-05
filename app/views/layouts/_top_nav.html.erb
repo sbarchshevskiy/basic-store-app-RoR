@@ -16,10 +16,18 @@
         </li>
         <li>
           <%= link_to 'About', :about %>
-
-        
         </li>
-        <li class="dropdown">
+        <% if current_user %>
+           <li>
+               <span class="nav navbar-nav">Logged in as<%= current_user.email%><  </span> 
+         </li>
+         
+         <li>
+         <%= form_for :user, :url => { :action => "logout", :controller=>"sessions", :method => "post"} do |f| %>
+             <%= f.submit "Logout"  %>
+            <%end%>
+         </li>
+                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             Categories
             <span class="caret"></span>
@@ -43,12 +51,24 @@
             <li><%= link_to 'Products',  [:admin, :products] %></li>
           </ul>
         </li>
-        <li>
+              <li>
           <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
+
+
+         <%else%>
+         <li>
+         <%= link_to 'Login', login_url, class: 'btn btn-outline-primary' %>
+         </li>
+           <li>
+         <%= link_to 'Register', registrations_url, class: 'btn btn-outline-primary' %>
+         </li>
+        <%end%>
       </ul>
     </div>
   </div>
+                 
+        
 </nav>
