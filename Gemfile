@@ -51,6 +51,7 @@ group :development, :test do
   gem 'byebug'
   gem 'quiet_assets'
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :development do

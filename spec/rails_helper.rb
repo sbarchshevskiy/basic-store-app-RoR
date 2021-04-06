@@ -1,8 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-
 require "capybara/rails"
 require "capybara/rspec"
 require "capybara/poltergeist" # Add this line to require poltergeist
+require 'rspec/rails'
+
 
 # Specs flagged with `js: true` will use Capybara's JS driver. Set
 # that JS driver to :poltergeist
