@@ -1,26 +1,21 @@
 
 require 'rails_helper'
 
-RSpec.describe Product, type: :model do
+RSpec.describe User, type: :model do
   describe 'Validations' do
 
-    @category = Category.create(name: 'Test')
-    products = Product.new(name: "TestProduct", category: @category, quantity: 1, price: 1000)
+    user = User.new(email: "testing@test.com", password: "test", password_confirmation: "test")
 
-    it "should have a name" do
-      expect(products.name).to be_truthy
+    it "should have an email" do
+      expect(user.email).not_to be_empty
     end
 
-    it "should have a price" do
-      expect(products.price).to be_truthy
+    it "should have a password" do
+      expect(user.password).not_to be_empty
     end
 
-    it "should have a quantity" do
-      expect(products.quantity).to be_truthy
-    end
-
-    it "should have a category listed" do
-      expect(products.category).to be_truthy
+    it "should have both confirm and original passwords mathcing" do
+      expect(user.password).to eq("test")
     end
 
   end
