@@ -51,7 +51,7 @@
           <% end %>
         </li>
          <li class="navbar-brand">
-         <%= form_for :user, :url => { :action => "logout", :controller=>"sessions", :method => "post"} do |f| %>
+         <%= form_for :user, url: logout_url do |f| %>
              <%= f.submit "Logout"  %>
             <%end%>
          </li>
